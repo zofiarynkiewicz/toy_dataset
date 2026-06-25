@@ -41,9 +41,10 @@ def format_spaced(a, b):
     """
     a_spaced = " ".join(list(str(a)))
     b_spaced = " ".join(list(str(b)))
+    solution_spaced = " ".join(list(str(a+b)))
     return {
         "input": f"{a_spaced} + {b_spaced} =",
-        "output": str(a + b),
+        "output": solution_spaced,
         "format": "spaced"
     }
 
@@ -54,9 +55,10 @@ def format_underscore(a, b):
 
     a_with_ = "_".join(str(a))
     b_with_ = "_".join(str(b))
+    solution_with_ = "_".join(str(a+b))
     return {
         "input": f"{a_with_} + {b_with_} =",
-        "output": str(a + b),
+        "output": solution_with_,
         "format": "underscore"
     }
 
@@ -75,7 +77,7 @@ def format_10e(a, b):
         return " ".join(tokens)
     return {
         "input": f"{to_10e(a)} + {to_10e(b)} =",
-        "output": str(a + b),
+        "output": f"{to_10e(str(a + b))}",
         "format": "10e_based"
     }
 
@@ -86,9 +88,10 @@ def format_leading_zeros(a, b, n_digits= 4):
     target_len = n_digits + 2
     a_with_zeros = str(a).zfill(target_len)
     b_with_zeros = str(b).zfill(target_len)
+    solution = str(a + b).zfill(target_len)
     return {
         "input": f"{a_with_zeros} + {b_with_zeros} =",
-        "output": str(a + b),
+        "output": solution,
         "format": "leading_zeros"
     }
 
@@ -98,6 +101,6 @@ def comma_separator(a,b):
     """
     return {
         "input": f"{a:,} + {b:,} =",
-        "output": str(a+b),
+        "output": f"{a+b:,}",
         "format": "comma"
     }
